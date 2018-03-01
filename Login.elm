@@ -1,5 +1,10 @@
 module Login exposing (..)
 
+import Html exposing (..)
+import Html.Events exposing (..)
+import Html.Attributes exposing (..)
+
+
 -- model
 
 
@@ -33,3 +38,39 @@ update msg model =
 
         PasswordInput password ->
             { model | password = password }
+
+
+
+-- view
+
+
+view : Model -> Html Msg
+view model =
+    div []
+        [ h3 [] [ text "Login Page.. So far" ]
+        , Html.form []
+            [ input
+                [ type_ "text"
+                , onInput UsernameInput
+                , placeholder "username"
+                ]
+                []
+            , input
+                [ type_ "password"
+                , onInput PasswordInput
+                , placeholder "password"
+                ]
+                []
+            , input [ type_ "submit" ]
+                [ text "Login" ]
+            ]
+        ]
+
+
+main : Program Never Model Msg
+main =
+    Html.beginnerProgram
+        { model = initModel
+        , update = update
+        , view = view
+        }
