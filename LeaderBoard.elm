@@ -1,7 +1,7 @@
 module LeaderBoard exposing (..)
 
 import Html exposing (..)
-import Html.Event exposing (..)
+import Html.Events exposing (..)
 import Html.Attributes exposing (..)
 
 
@@ -43,17 +43,19 @@ update msg model =
             { model | query = query }
 
 
+
 -- view
 
-view: Model -> Html Msg
+
+view : Model -> Html Msg
 view model =
     div []
-        [h3 [] [text "LeaderBoard page.. So far"]
-             ,input
-             [type_ "text"
-             , onInput QueryInput
-             , value model.query
-             , placeholder "Search fora runner..."
-             ]
-             []
+        [ h3 [] [ text "LeaderBoard page.. So far" ]
+        , input
+            [ type_ "text"
+            , onInput QueryInput
+            , value model.query
+            , placeholder "Search fora runner..."
+            ]
+            []
         ]
